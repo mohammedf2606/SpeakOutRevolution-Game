@@ -1,0 +1,198 @@
+.welcome-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+}
+
+.welcome-container {
+  max-width: 800px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 40px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.game-title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  background: linear-gradient(45deg, #FFD700, #FFA500);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.game-subtitle {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  color: #FFD700;
+  font-style: italic;
+}
+
+.game-description {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.game-description p {
+  margin-bottom: 10px;
+}
+
+.mission-text {
+  background: rgba(255, 215, 0, 0.1);
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid #FFD700;
+  margin-top: 15px;
+  font-style: italic;
+}
+
+.rules-section {
+  text-align: left;
+  margin-bottom: 30px;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.rules-section h3 {
+  color: #FFD700;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.rules-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.rules-section li {
+  margin-bottom: 8px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.rules-section li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.lifelines-preview {
+  margin-bottom: 40px;
+}
+
+.lifelines-preview h3 {
+  color: #FFD700;
+  margin-bottom: 20px;
+}
+
+.lifeline-icons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.lifeline-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.lifeline-icon {
+  font-size: 2rem;
+  background: rgba(255, 215, 0, 0.2);
+  padding: 15px;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #FFD700;
+}
+
+.lifeline-name {
+  font-size: 0.9rem;
+  color: #FFD700;
+}
+
+.start-button {
+  background: linear-gradient(45deg, #FFD700, #FFA500);
+  color: #000;
+  border: none;
+  padding: 20px 50px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+
+.start-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 20px rgba(255, 215, 0, 0.5);
+}
+
+.start-button:active {
+  transform: translateY(0);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .welcome-container {
+    padding: 20px;
+    margin: 10px;
+  }
+  
+  .game-title {
+    font-size: 2.5rem;
+  }
+  
+  .game-subtitle {
+    font-size: 1.4rem;
+  }
+  
+  .lifeline-icons {
+    gap: 20px;
+  }
+  
+  .lifeline-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-title {
+    font-size: 2rem;
+  }
+  
+  .game-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .start-button {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+  }
+  
+  .lifeline-icons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
