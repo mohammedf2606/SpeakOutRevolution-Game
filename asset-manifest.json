@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/SpeakOutRevolution-Game/static/css/main.17c8610e.css",
+    "main.js": "/SpeakOutRevolution-Game/static/js/main.e4439d0a.js",
+    "index.html": "/SpeakOutRevolution-Game/index.html",
+    "main.17c8610e.css.map": "/SpeakOutRevolution-Game/static/css/main.17c8610e.css.map",
+    "main.e4439d0a.js.map": "/SpeakOutRevolution-Game/static/js/main.e4439d0a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.17c8610e.css",
+    "static/js/main.e4439d0a.js"
+  ]
+}
