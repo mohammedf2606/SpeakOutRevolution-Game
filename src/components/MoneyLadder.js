@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import './MoneyLadder.css';
 
-const MoneyLadder = ({ questions, currentQuestion, score }) => {
+const MoneyLadder = ({ questions, currentQuestion }) => {
   const ladderContainerRef = useRef(null);
   const currentItemRef = useRef(null);
   
@@ -15,18 +15,13 @@ const MoneyLadder = ({ questions, currentQuestion, score }) => {
     return awarenessLevels[questionNumber - 1] || "Champion";
   };
 
-  // Initial scroll to bottom when component mounts
-  useEffect(() => {
-    if (ladderContainerRef.current) {
-      const container = ladderContainerRef.current;
-      setTimeout(() => {
-        container.scrollTo({
-          top: container.scrollHeight,
-          behavior: 'auto'
-        });
-      }, 100);
+  // Set initial scroll position to bottom using ref callback
+  const setLadderRef = (element) => {
+    ladderContainerRef.current = element;
+    if (element) {
+      element.scrollTop = element.scrollHeight;
     }
-  }, []);
+  };
 
   // Auto-scroll to current question when it changes, start at bottom for Novice level
   useEffect(() => {
@@ -62,7 +57,7 @@ const MoneyLadder = ({ questions, currentQuestion, score }) => {
   return (
     <div className="money-ladder">
       <h3 className="ladder-title">Awareness Ladder</h3>
-      <div className="ladder-container" ref={ladderContainerRef}>
+      <div className="ladder-container" ref={setLadderRef}>
         {questions.slice().reverse().map((question, index) => {
           const questionNumber = questions.length - index;
           const isCurrentQuestion = questionNumber === currentQuestion;
@@ -89,7 +84,7 @@ const MoneyLadder = ({ questions, currentQuestion, score }) => {
       
       <div className="current-score">
         <div className="score-label">Current Level:</div>
-        <div className="score-amount">{currentQuestion > 0 ? formatAwarenessLevel(currentQuestion) : "Starting"}</div>
+        <div className="score-amount">{currentQuestion > 1 ? formatAwarenessLevel(currentQuestion - 1) : "Starting"}</div>
       </div>
     </div>
   );
