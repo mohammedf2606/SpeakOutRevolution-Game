@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/SpeakOutRevolution-Game/static/css/main.016aad52.css",
-    "main.js": "/SpeakOutRevolution-Game/static/js/main.b0e4441f.js",
+    "main.js": "/SpeakOutRevolution-Game/static/js/main.5019d2e4.js",
     "index.html": "/SpeakOutRevolution-Game/index.html",
     "main.016aad52.css.map": "/SpeakOutRevolution-Game/static/css/main.016aad52.css.map",
-    "main.b0e4441f.js.map": "/SpeakOutRevolution-Game/static/js/main.b0e4441f.js.map"
+    "main.5019d2e4.js.map": "/SpeakOutRevolution-Game/static/js/main.5019d2e4.js.map"
   },
   "entrypoints": [
     "static/css/main.016aad52.css",
-    "static/js/main.b0e4441f.js"
+    "static/js/main.5019d2e4.js"
   ]
 }
