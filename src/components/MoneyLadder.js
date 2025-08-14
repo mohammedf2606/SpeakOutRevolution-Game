@@ -17,7 +17,7 @@ const MoneyLadder = ({ questions, currentQuestion, score }) => {
 
   // Initial scroll to bottom when component mounts
   useEffect(() => {
-    if (ladderContainerRef.current && currentQuestion === 0) {
+    if (ladderContainerRef.current) {
       const container = ladderContainerRef.current;
       setTimeout(() => {
         container.scrollTo({
@@ -26,7 +26,7 @@ const MoneyLadder = ({ questions, currentQuestion, score }) => {
         });
       }, 100);
     }
-  }, [currentQuestion]);
+  }, []);
 
   // Auto-scroll to current question when it changes, start at bottom for Novice level
   useEffect(() => {
@@ -89,7 +89,7 @@ const MoneyLadder = ({ questions, currentQuestion, score }) => {
       
       <div className="current-score">
         <div className="score-label">Current Level:</div>
-        <div className="score-amount">{currentQuestion > 0 ? formatAwarenessLevel(currentQuestion - 1) : "Novice"}</div>
+        <div className="score-amount">{currentQuestion > 0 ? formatAwarenessLevel(currentQuestion) : "Starting"}</div>
       </div>
     </div>
   );
