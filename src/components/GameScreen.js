@@ -107,14 +107,6 @@ const GameScreen = ({
     }
   };
 
-  const formatMoney = (amount) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      minimumFractionDigits: 0
-    }).format(amount);
-  };
-
   const awarenessLevels = [
     "Novice", "Beginner", "Learning", "Aware", "Informed", 
     "Knowledgeable", "Well-Informed", "Educated", "Expert", "Specialist",
