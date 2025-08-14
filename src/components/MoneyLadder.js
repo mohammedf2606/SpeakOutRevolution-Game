@@ -15,24 +15,47 @@ const MoneyLadder = ({ questions, currentQuestion, score }) => {
     return awarenessLevels[questionNumber - 1] || "Champion";
   };
 
-  // Auto-scroll to current question when it changes
+  // Initial scroll to bottom when component mounts
   useEffect(() => {
-    if (currentItemRef.current && ladderContainerRef.current) {
+    if (ladderContainerRef.current && currentQuestion === 0) {
       const container = ladderContainerRef.current;
-      const currentItem = currentItemRef.current;
+      setTimeout(() => {
+        container.scrollTo({
+          top: container.scrollHeight,
+          behavior: 'auto'
+        });
+      }, 100);
+    }
+  }, []);
+
+  // Auto-scroll to current question when it changes, start at bottom for Novice level
+  useEffect(() => {
+    if (ladderContainerRef.current) {
+      const container = ladderContainerRef.current;
       
-      // Calculate the position to center the current item
-      const containerHeight = container.clientHeight;
-      const itemHeight = currentItem.clientHeight;
-      const itemOffsetTop = currentItem.offsetTop;
-      
-      // Scroll to center the current item in the container
-      const scrollPosition = itemOffsetTop - (containerHeight / 2) + (itemHeight / 2);
-      
-      container.scrollTo({
-        top: Math.max(0, scrollPosition),
-        behavior: 'smooth'
-      });
+      if (currentQuestion === 0) {
+        // At the start, scroll to bottom to show Novice level (question 1)
+        container.scrollTo({
+          top: container.scrollHeight,
+          behavior: 'smooth'
+        });
+      } else if (currentItemRef.current) {
+        // After questions are answered, scroll to current level
+        const currentItem = currentItemRef.current;
+        
+        // Calculate the position to center the current item
+        const containerHeight = container.clientHeight;
+        const itemHeight = currentItem.clientHeight;
+        const itemOffsetTop = currentItem.offsetTop;
+        
+        // Scroll to center the current item in the container
+        const scrollPosition = itemOffsetTop - (containerHeight / 2) + (itemHeight / 2);
+        
+        container.scrollTo({
+          top: Math.max(0, scrollPosition),
+          behavior: 'smooth'
+        });
+      }
     }
   }, [currentQuestion]);
 
@@ -66,7 +89,7 @@ const MoneyLadder = ({ questions, currentQuestion, score }) => {
       
       <div className="current-score">
         <div className="score-label">Current Level:</div>
-        <div className="score-amount">{currentQuestion > 0 ? formatAwarenessLevel(currentQuestion - 1) : "Starting"}</div>
+        <div className="score-amount">{currentQuestion > 0 ? formatAwarenessLevel(currentQuestion - 1) : "Novice"}</div>
       </div>
     </div>
   );

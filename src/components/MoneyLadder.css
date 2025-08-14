@@ -20,7 +20,7 @@
   flex-direction: column;
   gap: 5px;
   max-height: 400px;
-  overflow-y: auto;
+  overflow: hidden;
   padding-right: 5px;
 }
 
