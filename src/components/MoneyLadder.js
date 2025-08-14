@@ -26,7 +26,7 @@ const MoneyLadder = ({ questions, currentQuestion, score }) => {
         });
       }, 100);
     }
-  }, []);
+  }, [currentQuestion]);
 
   // Auto-scroll to current question when it changes, start at bottom for Novice level
   useEffect(() => {
