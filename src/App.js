@@ -84,6 +84,7 @@ function App() {
         <GameOverScreen
           score={score}
           totalQuestions={questions.length}
+          questionsAnswered={currentQuestionIndex}
           onRestart={restartGame}
           isWinner={currentQuestionIndex === questions.length}
         />

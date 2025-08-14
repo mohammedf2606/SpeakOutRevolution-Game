@@ -1,7 +1,7 @@
 import React from 'react';
 import './GameOverScreen.css';
 
-const GameOverScreen = ({ score, totalQuestions, onRestart, isWinner }) => {
+const GameOverScreen = ({ score, totalQuestions, questionsAnswered, onRestart, isWinner }) => {
   const awarenessLevels = [
     "Novice", "Beginner", "Learning", "Aware", "Informed", 
     "Knowledgeable", "Well-Informed", "Educated", "Expert", "Specialist",
@@ -13,9 +13,8 @@ const GameOverScreen = ({ score, totalQuestions, onRestart, isWinner }) => {
   };
 
   const getCurrentLevel = () => {
-    // Calculate level based on score (assuming each question adds 1000 points starting from 1000)
-    const questionsPassed = Math.floor(score / 1000);
-    return questionsPassed > 0 ? formatAwarenessLevel(questionsPassed) : "Starting";
+    // Calculate level based on actual questions answered
+    return questionsAnswered > 0 ? formatAwarenessLevel(questionsAnswered) : "Starting";
   };
 
   const getResultMessage = () => {
@@ -80,15 +79,14 @@ const GameOverScreen = ({ score, totalQuestions, onRestart, isWinner }) => {
           <div className="stat-item">
             <span className="stat-label">Questions Answered:</span>
             <span className="stat-value">
-              {isWinner ? totalQuestions : Math.max(0, totalQuestions - (totalQuestions - Math.floor(score / 2000)))}
-              /{totalQuestions}
+              {questionsAnswered}/{totalQuestions}
             </span>
           </div>
           
           <div className="stat-item">
             <span className="stat-label">Success Rate:</span>
             <span className="stat-value">
-              {isWinner ? '100%' : `${Math.round((score / (totalQuestions * 2000)) * 100)}%`}
+              {questionsAnswered > 0 ? `${Math.round((questionsAnswered / totalQuestions) * 100)}%` : '0%'}
             </span>
           </div>
         </div>
