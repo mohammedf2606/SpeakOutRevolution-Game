@@ -14,15 +14,14 @@ The game serves as an educational tool that can be embedded into websites and pr
 
 ## 🎮 Game Features
 
-- **Progressive Difficulty**: Questions get harder as you climb the money ladder
+- **Progressive Difficulty**: Questions get harder as you climb the awareness ladder
 - **Lifelines**: Three classic lifelines to help you succeed
   - 50:50 - Remove two wrong answers
   - Ask the Audience - See simulated audience poll results
   - Phone a Friend - Get advice from a virtual friend
-- **Money Ladder**: Climb from $1,000 to $16,000,000
+- **Awareness Ladder**: Progress from Novice to Champion level
 - **Responsive Design**: Works perfectly in iframes and on all devices
 - **Smooth Animations**: Engaging visual effects and transitions
-- **Share Functionality**: Share your score with friends
 
 ## 🚀 Live Demo
 
@@ -152,9 +151,9 @@ The game is fully optimized for mobile devices and iframe embedding:
 
 ## 📊 Game Mechanics
 
-### Money Ladder
+### Awareness Ladder
 - 15 questions total
-- Progressive prize values: $1K → $16M
+- Progressive awareness levels: Novice → Champion
 - Safe havens at question 5 and 10 (feature can be implemented)
 
 ### Lifelines
@@ -163,9 +162,9 @@ The game is fully optimized for mobile devices and iframe embedding:
 - **Phone Friend**: Provides confidence-based advice
 
 ### Scoring
-- Correct answers advance to the next level
+- Correct answers advance to the next awareness level
 - Wrong answers end the game
-- Players can walk away with current winnings
+- Players can complete the challenge at their current level
 
 ## 🚀 Deployment
 

@@ -115,6 +115,16 @@ const GameScreen = ({
     }).format(amount);
   };
 
+  const awarenessLevels = [
+    "Novice", "Beginner", "Learning", "Aware", "Informed", 
+    "Knowledgeable", "Well-Informed", "Educated", "Expert", "Specialist",
+    "Advanced", "Professional", "Authority", "Master", "Champion"
+  ];
+
+  const formatAwarenessLevel = (questionNumber) => {
+    return awarenessLevels[questionNumber - 1] || "Champion";
+  };
+
   return (
     <div className="game-screen fade-in">
       <div className="game-header">
@@ -123,7 +133,7 @@ const GameScreen = ({
             Question {questionNumber} of {totalQuestions}
           </span>
           <span className="current-prize">
-            Awareness Level: {formatMoney(question.value)}
+            Playing for: {formatAwarenessLevel(questionNumber)}
           </span>
         </div>
         
@@ -179,7 +189,7 @@ const GameScreen = ({
               onClick={onWalkAway}
               disabled={!!selectedAnswer}
             >
-              Complete with Score: {formatMoney(score)}
+              Complete at Level: {questionNumber > 1 ? formatAwarenessLevel(questionNumber - 1) : "Starting"}
             </button>
           </div>
 
@@ -215,7 +225,7 @@ const GameScreen = ({
         <div className="sidebar">
           <MoneyLadder
             questions={Array.from({ length: totalQuestions }, (_, i) => ({
-              value: Math.pow(2, i + 1) * 1000,
+              value: (i + 1) * 1000, // Keep value for scoring but display will use awareness levels
               number: i + 1
             }))}
             currentQuestion={questionNumber}

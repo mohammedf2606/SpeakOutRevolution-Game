@@ -161,24 +161,6 @@
   box-shadow: 0 7px 20px rgba(76, 175, 80, 0.5);
 }
 
-.share-button {
-  background: linear-gradient(45deg, #2196F3, #64B5F6);
-  color: white;
-  border: none;
-  padding: 15px 30px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(33, 150, 243, 0.3);
-}
-
-.share-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 7px 20px rgba(33, 150, 243, 0.5);
-}
-
 .encouragement {
   font-style: italic;
   color: #B0BEC5;
@@ -243,8 +225,7 @@
     align-items: center;
   }
   
-  .restart-button,
-  .share-button {
+  .restart-button {
     width: 100%;
     max-width: 250px;
   }
@@ -263,8 +244,7 @@
     padding: 15px;
   }
   
-  .restart-button,
-  .share-button {
+  .restart-button {
     padding: 12px 25px;
     font-size: 1.1rem;
   }

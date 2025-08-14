@@ -2,12 +2,14 @@ import React from 'react';
 import './MoneyLadder.css';
 
 const MoneyLadder = ({ questions, currentQuestion, score }) => {
-  const formatMoney = (amount) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      minimumFractionDigits: 0
-    }).format(amount);
+  const awarenessLevels = [
+    "Novice", "Beginner", "Learning", "Aware", "Informed", 
+    "Knowledgeable", "Well-Informed", "Educated", "Expert", "Specialist",
+    "Advanced", "Professional", "Authority", "Master", "Champion"
+  ];
+
+  const formatAwarenessLevel = (questionNumber) => {
+    return awarenessLevels[questionNumber - 1] || "Champion";
   };
 
   return (
@@ -28,7 +30,7 @@ const MoneyLadder = ({ questions, currentQuestion, score }) => {
                 ${isSafeHaven ? 'safe-haven' : ''}`}
             >
               <span className="question-num">{questionNumber}</span>
-              <span className="prize-amount">{formatMoney(question.value)}</span>
+              <span className="prize-amount">{formatAwarenessLevel(questionNumber)}</span>
               {isSafeHaven && (
                 <span className="safe-indicator">🛡️</span>
               )}
@@ -38,8 +40,8 @@ const MoneyLadder = ({ questions, currentQuestion, score }) => {
       </div>
       
       <div className="current-score">
-        <div className="score-label">Current Awareness Score:</div>
-        <div className="score-amount">{formatMoney(score)}</div>
+        <div className="score-label">Current Level:</div>
+        <div className="score-amount">{currentQuestion > 0 ? formatAwarenessLevel(currentQuestion - 1) : "Starting"}</div>
       </div>
     </div>
   );

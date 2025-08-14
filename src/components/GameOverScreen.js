@@ -2,12 +2,20 @@ import React from 'react';
 import './GameOverScreen.css';
 
 const GameOverScreen = ({ score, totalQuestions, onRestart, isWinner }) => {
-  const formatMoney = (amount) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      minimumFractionDigits: 0
-    }).format(amount);
+  const awarenessLevels = [
+    "Novice", "Beginner", "Learning", "Aware", "Informed", 
+    "Knowledgeable", "Well-Informed", "Educated", "Expert", "Specialist",
+    "Advanced", "Professional", "Authority", "Master", "Champion"
+  ];
+
+  const formatAwarenessLevel = (questionNumber) => {
+    return awarenessLevels[questionNumber - 1] || "Champion";
+  };
+
+  const getCurrentLevel = () => {
+    // Calculate level based on score (assuming each question adds 1000 points starting from 1000)
+    const questionsPassed = Math.floor(score / 1000);
+    return questionsPassed > 0 ? formatAwarenessLevel(questionsPassed) : "Starting";
   };
 
   const getResultMessage = () => {
@@ -40,26 +48,7 @@ const GameOverScreen = ({ score, totalQuestions, onRestart, isWinner }) => {
 
   const result = getResultMessage();
 
-  const shareScore = () => {
-    const text = `I just scored ${formatMoney(score)} in the SpeakOut Revolution Workplace Awareness Challenge! Test your knowledge about workplace harassment statistics and help create safer workplaces.`;
-    
-    if (navigator.share) {
-      navigator.share({
-        title: 'SpeakOut Revolution - Workplace Awareness Challenge',
-        text: text,
-        url: window.location.href
-      });
-    } else {
-      // Fallback for browsers that don't support Web Share API
-      navigator.clipboard.writeText(`${text} ${window.location.href}`)
-        .then(() => {
-          alert('Score copied to clipboard!');
-        })
-        .catch(() => {
-          alert(`Share your score: ${text}`);
-        });
-    }
-  };
+
 
   return (
     <div className="game-over-screen fade-in">
@@ -71,8 +60,8 @@ const GameOverScreen = ({ score, totalQuestions, onRestart, isWinner }) => {
 
         <div className="score-display">
         <div className="final-score">
-          <span className="score-label">Final Awareness Score:</span>
-          <span className="score-value">{formatMoney(score)}</span>
+          <span className="score-label">Final Awareness Level:</span>
+          <span className="score-value">{getCurrentLevel()}</span>
         </div>          {isWinner && (
             <div className="winner-badge">
               <div className="badge-content">
@@ -107,10 +96,6 @@ const GameOverScreen = ({ score, totalQuestions, onRestart, isWinner }) => {
         <div className="action-buttons">
           <button className="restart-button glow" onClick={onRestart}>
             Play Again
-          </button>
-          
-          <button className="share-button" onClick={shareScore}>
-            Share Score
           </button>
         </div>
 
